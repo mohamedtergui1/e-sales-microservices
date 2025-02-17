@@ -9,3 +9,7 @@ spring:
           uri: lb:http://USER-SERVICE
           predicates:
             - Path=/api/v1/users/**
+        - id: product-service
+          uri: lb:http://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/v1/products/**
