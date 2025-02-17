@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      username: tergui
+      password: tergui
+      host: localhost
+      port: 27017
+      database: docnearme
+      authentication-database: admin
+
+server:
+  port: 8090
