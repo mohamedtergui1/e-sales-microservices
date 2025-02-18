@@ -12,4 +12,4 @@ spring:
         - id: product-service
           uri: lb:http://PRODUCT-SERVICE
           predicates:
-            - Path=/api/v1/products/**
+            - Path=/api/products/**
