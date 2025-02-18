@@ -32,6 +32,11 @@ public class CategoryController {
         return categoryService.addCategory(categoryDTO);
     }
 
+    @PutMapping("/{id}")
+    public CategoryDTO updateCategory(@PathVariable String id, @RequestBody CategoryDTO categoryDTO) {
+        return categoryService.updateCategory(id,categoryDTO);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable String id) {
         categoryService.deleteCategory(id);
