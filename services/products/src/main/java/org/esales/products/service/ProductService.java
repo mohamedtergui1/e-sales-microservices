@@ -11,4 +11,5 @@ public interface ProductService {
     ProductDTO addProduct(ProductDTO productDTO);
     ProductDTO updateProduct(String id, ProductDTO productDTO);
     void deleteProduct(String id);
+    Long countProducts();
 }
