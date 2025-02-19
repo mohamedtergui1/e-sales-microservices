@@ -1,11 +1,11 @@
 spring:
   data:
     mongodb:
-      username: tergui
-      password: tergui
-      host: localhost
+      username: admin
+      password: admin
+      hosts: localhost
       port: 27017
-      database: docnearme
+      database: utilisateurs
       authentication-database: admin
 
 server:
