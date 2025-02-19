@@ -6,7 +6,11 @@ import org.mapstruct.*;
 
 @Mapper (componentModel = "spring")
 public interface ProductMapper {
+
+    @Mapping(target = "categoryId", source = "category.id")
     ProductDTO toDto(Product product);
+
+
     Product toEntity(ProductDTO productDTO);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

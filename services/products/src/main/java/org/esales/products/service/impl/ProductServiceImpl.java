@@ -43,10 +43,12 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new NotFoundException("Category not found with ID: " + productDTO.getCategoryId()));
 
         Product product = productMapper.toEntity(productDTO);
-        product.setCategory(category); // Set category after mapping
+        product.setCategory(category); // Set category reference
 
         Product savedProduct = productRepository.save(product);
-        return productMapper.toDto(savedProduct);
+        ProductDTO responseDto = productMapper.toDto(savedProduct);
+        responseDto.setCategoryId(category.getId()); // Ensure categoryId is set in response
+        return responseDto;
     }
 
     @Override
@@ -54,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
         Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Product not found with ID: " + id));
 
-        productMapper.updateProductFromDto(productDTO, existingProduct); // Use MapStruct for updates
+        productMapper.updateProductFromDto(productDTO, existingProduct);
 
         if (productDTO.getCategoryId() != null) {
             Category category = categoryRepository.findById(productDTO.getCategoryId())
@@ -63,8 +65,11 @@ public class ProductServiceImpl implements ProductService {
         }
 
         Product updatedProduct = productRepository.save(existingProduct);
-        return productMapper.toDto(updatedProduct);
+        ProductDTO responseDto = productMapper.toDto(updatedProduct);
+        responseDto.setCategoryId(updatedProduct.getCategory().getId()); // Ensure categoryId is set in response
+        return responseDto;
     }
+
 
     @Override
     public void deleteProduct(String id) {
