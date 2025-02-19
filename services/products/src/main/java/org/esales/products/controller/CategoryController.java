@@ -3,6 +3,7 @@ package org.esales.products.controller;
 import jakarta.validation.Valid;
 import org.esales.products.dto.CategoryDTO;
 import org.esales.products.service.CategoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,7 +40,8 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCategory(@PathVariable String id) {
+    public ResponseEntity<String> deleteCategory(@PathVariable String id) {
         categoryService.deleteCategory(id);
+        return ResponseEntity.ok("Category deleted successfully");
     }
 }
