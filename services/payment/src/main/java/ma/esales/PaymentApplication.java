@@ -1,4 +1,4 @@
-package ma.esales.payment;
+package ma.esales;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
