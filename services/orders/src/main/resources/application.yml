@@ -1,18 +1,12 @@
 server:
-  port: 8083
+  port: 8082
 
 spring:
+  config:
+    import: optional:configserver:http://localhost:8888
   application:
-    name: orders-service
-  datasource:
-    url: jdbc:mysql://localhost:3306/esales_orders
-    username: root
-    password: secret
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+    name: order-service
+
 
 eureka:
   client:
