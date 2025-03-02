@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service
+  labels:
+    app: payment-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: payment-service
+  template:
+    metadata:
+      labels:
+        app: payment-service
+    spec:
+      containers:
+        - name: payment-service
+          image: mohamedtergui/payment-service:0.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7368
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            # PostgreSQL Configuration
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres-db:5432/e-sales"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "e-sales"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "e-sales"

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discovery-service
+  labels:
+    app: discovery-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discovery-service
+  template:
+    metadata:
+      labels:
+        app: discovery-service
+    spec:
+      containers:
+        - name: discovery-service
+          image: mohamedtergui/discovery-service:0.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8761  # Default port for Eureka Server
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"

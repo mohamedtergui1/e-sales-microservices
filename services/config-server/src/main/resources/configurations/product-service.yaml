@@ -2,3 +2,5 @@ spring:
   data:
     mongodb:
       uri: mongodb://e-sales:e-sales@localhost:27017/products?authSource=admin
+server:
+  port: 9898
