@@ -5,11 +5,16 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: user-service
-          uri: lb:http://USER-SERVICE
+        - id: customer-service
+          uri: lb:http://customer-SERVICE
           predicates:
-            - Path=/api/v1/users/**
+            - Path=/api/v1/customers/**
         - id: product-service
           uri: lb:http://PRODUCT-SERVICE
           predicates:
             - Path=/api/products/**
+            - Path=/api/v1/products/**
+        - id: payment-service
+          uri: lb:http://PAYMENT-SERVICE
+          predicates:
+            - Path=/api/v1/payments/**

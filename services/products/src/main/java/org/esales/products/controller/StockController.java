@@ -45,8 +45,7 @@ public class StockController {
     }
 
     @PostMapping("/{id}/{quantity}")
-    public ResponseEntity<String> processOrder(@PathVariable String id, @PathVariable BigDecimal quantity) {
-        BigDecimal totalCost = stockService.processOrder(id, quantity);
-        return ResponseEntity.ok("Order processed successfully! Total cost: $" + totalCost);
+    public BigDecimal processOrder(@PathVariable String id, @PathVariable BigDecimal quantity) {
+        return stockService.processOrder(id, quantity);
     }
 }
