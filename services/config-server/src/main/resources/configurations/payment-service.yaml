@@ -1,0 +1,46 @@
+# Configuration du serveur
+server:
+  port: 8083
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/e-sales
+    username: e-sales
+    password: e-sales
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+# Configuration des microservices
+order:
+  service:
+    url: http://localhost:8082
+
+user:
+  service:
+    url: http://localhost:8081
+
+# Configuration des délais de paiement (en heures)
+payment:
+  expiration:
+    delay: 24
+  methods: CARTE_BANCAIRE,PAYPAL,VIREMENT
+
+stripe:
+  api:
+    key: pk_test_51OltzlAd0Mrqfr6LkjyUSQ4nRelnTjXpUHK9dzew86gKoLa1wHMrSYYSSc2E9TSzH2vg0IjxmYeA5vDAbWqd0MeT00BFxVuutm
+  webhook:
+    secret: whsec_votreclésecretstripe
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
