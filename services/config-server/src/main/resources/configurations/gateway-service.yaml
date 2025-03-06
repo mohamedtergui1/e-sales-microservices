@@ -12,12 +12,4 @@ spring:
         - id: product-service
           uri: lb:http://PRODUCT-SERVICE
           predicates:
-<<<<<<< Updated upstream
             - Path=/api/products/**
-=======
-            - Path=/api/products/**
-        - id: payment-service
-          uri: lb:http://PAYMENT-SERVICE
-          predicates:
-            - Path=/api/v1/payments/**
->>>>>>> Stashed changes
